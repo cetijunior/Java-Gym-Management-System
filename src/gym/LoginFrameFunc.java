@@ -12,10 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Shan Wijenayaka
- */
 public class LoginFrameFunc {
     private static String logName;
     public void setLogName(String lg){

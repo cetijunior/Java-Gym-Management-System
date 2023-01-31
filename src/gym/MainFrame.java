@@ -4,21 +4,12 @@
  */
 package gym;
 
-import gym.DBConnection;
-import gym.DeleteMember;
-import gym.GetMemDetails;
-import gym.UpdateMember;
-import gym.addmember;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author User
- */
 public final class MainFrame extends javax.swing.JFrame {
 
     /**
@@ -707,8 +698,8 @@ static String[] results = new String[18];
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(gen1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -762,7 +753,7 @@ static String[] results = new String[18];
                 .addGap(26, 26, 26)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
         );
         jPanel23Layout.setVerticalGroup(
@@ -774,13 +765,10 @@ static String[] results = new String[18];
                             .addComponent(jLabel25)
                             .addComponent(id1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel26))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(regOn1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel26)
+                            .addComponent(regOn1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
@@ -835,7 +823,7 @@ static String[] results = new String[18];
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addMemBtn)
                     .addComponent(btnDelete)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnUpdate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -877,14 +865,13 @@ static String[] results = new String[18];
         // TODO add your handling code here:
         yes = true;
         if("".equals(idS.getText())){
-            JOptionPane.showMessageDialog(null,"please first enter a ID number to search");
+            JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari");
         }
         else{
             String SearchID = idS.getText();
             SearchKey= idS.getText();
 
             results = new GetMemDetails().search(SearchID);
-            // results = new GetMemDetails().searchByID(SearchID);
             for(int i= 0;i<14;i++){
                 System.out.println(results[i]);
                 System.out.println();
@@ -894,14 +881,11 @@ static String[] results = new String[18];
             ladd1.setText(results[3]);
             lcon1.setText(results[2]);
             lemail1.setText(results[7]);
-
             gen1.setText(results[9]);
             h1.setText(results[10]);
             w1.setText(results[11]);
             bmi1.setText(results[12]);
             remarks.setText(results[13]);
-
-            //memcat1.setText(results[15]);
             id1.setText(results[1]);
             regOn1.setText(results[5]);
             regBy1.setText(results[4]);
@@ -922,7 +906,7 @@ static String[] results = new String[18];
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         if(yes == false){
-            JOptionPane.showMessageDialog(null,"please first choose a member to update");
+            JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari");
         }
         else{
             try {
@@ -940,7 +924,7 @@ static String[] results = new String[18];
                     new DeleteMember((lname.getText()), (idS.getText())).setVisible(true);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"there is no "+idS.getText()+" inside the database,Please check the ID and try again");
+                    JOptionPane.showMessageDialog(null,"Nuk ka  "+idS.getText()+" ne database, kontrollo ID-ne");
 
                 }
             } catch (SQLException ex) {
@@ -1053,27 +1037,7 @@ static String[] results = new String[18];
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
@@ -1082,10 +1046,6 @@ static String[] results = new String[18];
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
@@ -1093,35 +1053,15 @@ static String[] results = new String[18];
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel ladd;
     private javax.swing.JLabel ladd1;
-    private javax.swing.JLabel ladd4;
-    private javax.swing.JLabel ladd5;
-    private javax.swing.JLabel ladd6;
-    private javax.swing.JLabel ladd7;
     private javax.swing.JLabel lastUpdated;
     private javax.swing.JLabel lcon;
     private javax.swing.JLabel lcon1;
-    private javax.swing.JLabel lcon4;
-    private javax.swing.JLabel lcon5;
-    private javax.swing.JLabel lcon6;
-    private javax.swing.JLabel lcon7;
     private javax.swing.JLabel lemail;
     private javax.swing.JLabel lemail1;
-    private javax.swing.JLabel lemail4;
-    private javax.swing.JLabel lemail5;
-    private javax.swing.JLabel lemail6;
-    private javax.swing.JLabel lemail7;
     private javax.swing.JLabel lname;
     private javax.swing.JLabel lname1;
-    private javax.swing.JLabel lname4;
-    private javax.swing.JLabel lname5;
-    private javax.swing.JLabel lname6;
-    private javax.swing.JLabel lname7;
     private javax.swing.JLabel lnic;
     private javax.swing.JLabel lnic1;
-    private javax.swing.JLabel lnic4;
-    private javax.swing.JLabel lnic5;
-    private javax.swing.JLabel lnic6;
-    private javax.swing.JLabel lnic7;
     private javax.swing.JLabel memcat;
     private javax.swing.JLabel regBy;
     private javax.swing.JLabel regBy1;

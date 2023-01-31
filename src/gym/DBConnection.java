@@ -8,10 +8,7 @@ package gym;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class DBConnection {
     private Connection DBConnection;
     public Connection connect(){

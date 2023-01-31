@@ -13,10 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class DeleteMember extends javax.swing.JFrame {
 
     /**
@@ -112,7 +109,7 @@ public class DeleteMember extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Remove Member");
+        jLabel16.setText("Fshij anetarin?");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);

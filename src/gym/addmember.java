@@ -5,15 +5,9 @@
  */
 package gym;
 
-import java.io.File;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class addmember extends javax.swing.JFrame{
 
     /**
@@ -24,8 +18,8 @@ public class addmember extends javax.swing.JFrame{
     }
    
    
-private static String memName,contactNo,memAddress;
-private static String NIC,emailAddress,emContact, Gender, Remarks;
+private static String memName, contactNo, memAddress;
+private static String NIC, emailAddress, Gender, Remarks;
 private static Double H, W ;
 
     
@@ -35,11 +29,9 @@ private static Double H, W ;
         address.setText("");
         contact.setText("");
         email.setText("");
-        
         height.setText("");
         weight.setText("");
         remarks.setText("");
-        //emcontact.setText("");
   }
     
 public boolean checkIsEmpty(){
@@ -54,12 +46,11 @@ public boolean checkIsEmpty(){
    
    String [] xxx = {a,b,c,d,e,f,g};
    
-   if (a=="" || b=="" || c=="" || d=="" || e=="" || f=="" || g==""){
+   if (a==("") || b==("") || c==("") || d==("") || e==("") || f==("") || g==("")){
    JOptionPane.showMessageDialog(null, "Sigurohu qe t'i mbushesh fushat me infon e pershtatshme.");
    }
         return false;
    
-
    
  
 }
@@ -417,7 +408,7 @@ public boolean checkIsEmpty(){
 
         add.addToMemberDetails(memName,contactNo,memAddress);
 
-        add.addTOMoreMemDetails(NIC,emailAddress,emContact, Gender,Remarks,H,W);
+        add.addTOMoreMemDetails(NIC,emailAddress,Gender,H,W,Remarks);
 
     }//GEN-LAST:event_addDBActionPerformed
 

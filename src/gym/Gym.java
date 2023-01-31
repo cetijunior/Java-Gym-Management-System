@@ -10,10 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class Gym {
 
     /**

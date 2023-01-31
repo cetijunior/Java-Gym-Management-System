@@ -4,10 +4,6 @@
  */
 package gym;
 
-/**
- *
- * @author User
- */
 public class LoginFrame extends javax.swing.JFrame {
 
     /**

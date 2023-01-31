@@ -14,10 +14,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class AddMemberFunc {
     
     
@@ -41,8 +38,7 @@ Connection conn = new DBConnection().connect();
         
         
         ps.setString(5, new LoginFrameFunc().getLogName());
-        JOptionPane.showMessageDialog(null, memName+"'s information succefully entered to the database");
-        
+        JOptionPane.showMessageDialog(null, "Informacioni i pjesa pareS "+ memName + " u shtua ne sistem me sukses");
         ps.executeUpdate();
     
     
@@ -51,38 +47,35 @@ Connection conn = new DBConnection().connect();
     }
         
     }
-
-   // void addTOMoreMemDetails(String NIC, String emailAddress, String emContact, String gender, String remarks) 
-
-   
     
     
     
     
-    void addTOMoreMemDetails(String NIC, String emailAddress, String emContact, 
-            String Gender, String Remarks, Double H, Double W) {
-    try {
+    
+    
+    
+    void addTOMoreMemDetails(String NIC, String emailAddress, String Gender, Double H, Double W, String Remarks) {
+    
+        try {
         PreparedStatement ps;
         ps = conn.prepareStatement("insert into "
-                + "morememberdetails"+"(id,nic,email,gender,height,weight,bmi,remarks,lastUpdated) "
-                + "values(?,?,?,?,?,?,?,?,?,)");
+                + "morememberdetails"+"(id,nic,email,gender,height,weight,remarks,bmi,lastUpdated) "
+                + "values(?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, getId());
         ps.setString(2, NIC);
         ps.setString(3, emailAddress);
-        ps.setString(4, emContact);
-        ps.setString(5, Gender);
-        ps.setDouble(6, H);
-        ps.setDouble(7, W);
+        ps.setString(4, Gender);
+        ps.setDouble(5, H);
+        ps.setDouble(6, W);
+        ps.setString(7, Remarks);
         ps.setInt(8,getBMI(H,W));
-        ps.setString(9, Remarks);
-        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-        ps.setTimestamp(10, date);
-        //ps.setString(11,MemberCat );
-        //ps.setString(12,ReciptNo );
-        //ps.setString(13,payments );
         
-        ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, "information succefully entered to the database");
+        
+        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+        ps.setTimestamp(9, date);
+        
+        ps.executeUpdate();        
+        JOptionPane.showMessageDialog(null, "Informacioni u shtua ne sistem me sukses");
         
     } catch (SQLException ex) {
         Logger.getLogger(AddMemberFunc.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,7 +103,7 @@ Connection conn = new DBConnection().connect();
                 
                return lastid; 
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"problem at setting foriegn key: "+e );
+                JOptionPane.showMessageDialog(null,"problem me SQL : setting foriegn key: "+e );
                 System.out.println(e);
             }
     

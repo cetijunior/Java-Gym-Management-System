@@ -22,10 +22,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-/**
- *
- * @author Shan Wijenayaka
- */
 @Entity
 @Table(name = "memberdetails", catalog = "gymdb", schema = "")
 @NamedQueries({

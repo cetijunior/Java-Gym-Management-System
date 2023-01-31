@@ -12,17 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Shan Wijenayaka
- */
-public class GetMemDetails {
+
+public class GetMemDetails   {
 Connection conn = new DBConnection().connect();
-String [] results = new String[18];
+String [] results = new String[14];
     
 private static String name, memId ,contact,address,registeredBy,registeredOn;
-private static String NIC, Email, emContact , Gender , Height , Weight , BMI , Remarks , LastUpdated ,
-        MembershipCat,ReciptNo , PaymentPlan ;
+private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , LastUpdated;
 
     /**
      *
@@ -31,7 +27,7 @@ private static String NIC, Email, emContact , Gender , Height , Weight , BMI , R
      */
     public String[] search(String SearchID) {
         if(SearchID == ""){
-            JOptionPane.showMessageDialog(null,"please enter an id number to search member details" );
+            JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari" );
         }
         else{
             try {
@@ -55,7 +51,7 @@ private static String NIC, Email, emContact , Gender , Height , Weight , BMI , R
                 }
                 
                 else{
-                 JOptionPane.showMessageDialog(null,"there is no "+SearchID+" inside the database" );
+                 JOptionPane.showMessageDialog(null,"Nuk ka anetar me id: " + SearchID + " ne database" );
                  
              }
                 
@@ -81,16 +77,12 @@ private static String NIC, Email, emContact , Gender , Height , Weight , BMI , R
              if(rs2.next()){
                  NIC = rs2.getString("nic");
                  Email = rs2.getString("email");
-                 //emContact = rs2.getString("emcontact");
                  Gender = rs2.getString("gender");
                  Height = rs2.getString("height");
                  Weight = rs2.getString("weight");
                  BMI = rs2.getString("bmi");
                  Remarks = rs2.getString("remarks");
                  LastUpdated = rs2.getString("lastUpdated");
-                 //MembershipCat = rs2.getString("membership_cat"); 
-                 //ReciptNo = rs2.getString("recipt_no");
-                 //PaymentPlan = rs2.getString("payment_plan");
              
              }
              
@@ -98,9 +90,8 @@ private static String NIC, Email, emContact , Gender , Height , Weight , BMI , R
             
             
         
-         String [] r  = {name, memId ,contact,address,registeredBy,registeredOn,NIC, Email, emContact , Gender , Height , Weight , BMI , Remarks , LastUpdated ,
-        MembershipCat,ReciptNo , PaymentPlan};
-            System.arraycopy(r, 0, results, 0, 18);
+         String [] r  = {name, memId, contact, address, registeredBy, registeredOn, NIC, Email, Gender, Height, Weight, BMI, Remarks, LastUpdated};
+            System.arraycopy(r, 0, results, 0, 14);
          
         
         

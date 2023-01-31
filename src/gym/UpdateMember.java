@@ -7,15 +7,9 @@ package gym;
 
 
 
-import java.io.File;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Shan Wijenayaka
- */
+
 public class UpdateMember extends javax.swing.JFrame {
 
     /**
@@ -23,9 +17,9 @@ public class UpdateMember extends javax.swing.JFrame {
      */
     
     
-    private static String Name ,id;
+    private static String Name, id ;
     private static String memName,contactNo,memAddress;
-private static String NIC,emailAddress,emContact, Gender,Remarks;
+private static String NIC,emailAddress,Gender,Remarks;
 private static Double H, W ;
     public UpdateMember() {
         initComponents();
@@ -33,7 +27,6 @@ private static Double H, W ;
     public UpdateMember( String i){
         initComponents();
      
-        id = i;
        JOptionPane.showMessageDialog(null,"from constructor id value :"+id );
         
     }
@@ -42,17 +35,17 @@ private static Double H, W ;
    static String [] rr = new GetMemDetails().search(id);
 
    public void clearFields(){
-      name.setText("");
+        name.setText("");
         nic.setText("");
         address.setText("");
         contact.setText("");
         email.setText("");
-        
         height.setText("");
         weight.setText("");
         remarks.setText("");
-        //emcontact.setText("");
   }
+   
+   
     
     
     
@@ -154,7 +147,7 @@ private static Double H, W ;
 
         addDB.setBackground(new java.awt.Color(0, 102, 51));
         addDB.setForeground(new java.awt.Color(255, 255, 255));
-        addDB.setText("Shto Ne Sistem");
+        addDB.setText("Perditeso");
         addDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDBActionPerformed(evt);
@@ -385,20 +378,14 @@ private static Double H, W ;
         memAddress = address.getText();
         emailAddress = email.getText();
         NIC = nic.getText();
-        //emContact = emcontact.getText();
         Gender = gender.getSelectedItem().toString();
         Remarks = remarks.getText();
         H= Double.parseDouble(height.getText());
         W= Double.parseDouble(weight.getText());
-        /*MemberCat = memcat.getSelectedItem().toString();
-        ReciptNo = reciptno.getText();
-        payments = paymentplan.getSelectedItem().toString();*/
 
         add.addToMemberDetails(memName,contactNo,memAddress);
-        //NIC,emailAddress,emContact, gender,remarks MemberCat , ReciptNo , payments;
 
-        add.addTOMoreMemDetails(NIC,emailAddress,emContact, Gender,Remarks,H,W);
-        // add.addToPictures(ImgPath);
+        add.addTOMoreMemDetails(NIC,emailAddress,Gender,H,W,Remarks);
     }//GEN-LAST:event_addDBActionPerformed
 
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed

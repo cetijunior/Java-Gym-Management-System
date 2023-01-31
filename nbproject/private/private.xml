@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/LoginFrame.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/DBConnection.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/MainFrame.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/DeleteMember.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/UpdateMember.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/AddMemberFunc.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/addmember.java</file>
-            <file>file:/C:/Users/User/Desktop/Gymmm/src/gym/UpdateMemFunc.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/UpdateMemFunc.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/MainFrame.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/Gym.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/Memberdetails.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/DeleteMember.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/AddMemberFunc.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/LoginFrame.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/UpdateMember.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/GetMemDetails.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/DBConnection.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/LoginFrameFunc.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/addmember.java</file>
+            <file>file:/C:/Users/User/Desktop/Gymmm/Sistem-Menaxhim-Palestre/src/gym/Home.java</file>
         </group>
     </open-files>
 </project-private>
