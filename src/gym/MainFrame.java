@@ -928,7 +928,6 @@ public final class MainFrame extends javax.swing.JFrame {
             UpdateMember update = new UpdateMember(idS.getText());
             
             this.setVisible(false);
-            
             update.setVisible(true);
          
         System.out.println("id e marre"+ idS.getText()); 

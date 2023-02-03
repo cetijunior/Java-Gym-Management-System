@@ -23,9 +23,25 @@ private static Double H, W ;
     public UpdateMember() {
         initComponents();
     }
-    public UpdateMember( String i){
+    public UpdateMember( String ii){
         initComponents();
-        id = i;
+        id = ii;
+        
+        results = new GetMemDetails().search(SearchID);
+            for(int i= 0;i<12;i++){
+                System.out.println(results[i]);
+                System.out.println();
+            }
+            name.setText(results[0]);
+            nic.setText(results[6]);
+            address.setText(results[3]);
+            contact.setText(results[2]);
+            email.setText(results[7]);
+
+            height.setText(results[9]);
+            weight.setText(results[10]);
+
+            remarks.setText(results[12]);
        //JOptionPane.showMessageDialog(null,"id e marre :"+id );
       
        
@@ -45,7 +61,7 @@ private static Double H, W ;
         remarks.setText("");
   }
    
-   public void placeholderText(String SearchID){
+   /*public void placeholderText(String SearchID){
    
        results = new GetMemDetails().search(SearchID);
             for(int i= 0;i<12;i++){
@@ -66,7 +82,7 @@ private static Double H, W ;
    
    }
    
-   
+   */
             
     
     /**
@@ -81,7 +97,6 @@ private static Double H, W ;
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        getInfo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         addDB = new javax.swing.JButton();
@@ -130,13 +145,6 @@ private static Double H, W ;
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Perditeso te dhenat: ");
 
-        getInfo.setText("Info get test");
-        getInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getInfoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -145,9 +153,7 @@ private static Double H, W ;
                 .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(70, 70, 70)
                 .addComponent(jLabel17)
-                .addGap(77, 77, 77)
-                .addComponent(getInfo)
-                .addContainerGap())
+                .addGap(177, 177, 177))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +163,7 @@ private static Double H, W ;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(getInfo)
-                    .addComponent(jLabel17))
+                .addComponent(jLabel17)
                 .addContainerGap())
         );
 
@@ -442,11 +446,6 @@ private static Double H, W ;
         // TODO add your handling code here:
     }//GEN-LAST:event_weightActionPerformed
 
-    private void getInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInfoActionPerformed
-        // TODO add your handling code here:
-        placeholderText(SearchID);
-    }//GEN-LAST:event_getInfoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -491,7 +490,6 @@ private static Double H, W ;
     private javax.swing.JTextField contact;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox gender;
-    private javax.swing.JButton getInfo;
     private javax.swing.JTextField height;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
