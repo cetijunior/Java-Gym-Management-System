@@ -19,9 +19,27 @@ public final class MainFrame extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    public void clearFields(){
+        lname1.setText("");
+        lnic1.setText("");
+        ladd1.setText("");
+        lcon1.setText("");
+        lemail1.setText("");
+        gen1.setText("");
+        h1.setText("");
+        w1.setText("");
+        bmi1.setText("");
+        remarks.setText("");
+        id1.setText("");
+        regOn1.setText("");        
+        regBy1.setText("");
+  }
+    
+    
     static String SearchKey;
     static boolean yes;
-static String[] results = new String[18];
+    static String[] results = new String[14];
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -624,14 +642,18 @@ static String[] results = new String[18];
                     .addComponent(jLabel38)
                     .addComponent(jLabel43)
                     .addComponent(jLabel44))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lname1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lnic1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lcon1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ladd1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lemail1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 43, Short.MAX_VALUE))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lname1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lnic1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lcon1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ladd1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 43, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                        .addComponent(lemail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -697,9 +719,9 @@ static String[] results = new String[18];
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
                     .addComponent(gen1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -820,10 +842,10 @@ static String[] results = new String[18];
                 .addGap(4, 4, 4)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addMemBtn)
-                    .addComponent(btnDelete)
-                    .addComponent(btnUpdate))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addMemBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -881,11 +903,11 @@ static String[] results = new String[18];
             ladd1.setText(results[3]);
             lcon1.setText(results[2]);
             lemail1.setText(results[7]);
-            gen1.setText(results[9]);
-            h1.setText(results[10]);
-            w1.setText(results[11]);
-            bmi1.setText(results[12]);
-            remarks.setText(results[13]);
+            gen1.setText(results[8]);
+            h1.setText(results[9]);
+            w1.setText(results[10]);
+            bmi1.setText(results[11]);
+            remarks.setText(results[12]);
             id1.setText(results[1]);
             regOn1.setText(results[5]);
             regBy1.setText(results[4]);
@@ -898,9 +920,19 @@ static String[] results = new String[18];
     }//GEN-LAST:event_idSidSActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        new UpdateMember().setVisible(true);
-        this.setVisible(false);
+
+        if(yes == false){
+            JOptionPane.showMessageDialog(null,"Zgjidh nje anetar");
+        }
+        else{
+            UpdateMember update = new UpdateMember(idS.getText());
+            
+            this.setVisible(false);
+            
+            update.setVisible(true);
+         
+        System.out.println("id e marre"+ idS.getText()); 
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -931,11 +963,12 @@ static String[] results = new String[18];
                 JOptionPane.showMessageDialog(null,"error at setting member details in home "+ex);
             }
         }
+        clearFields();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void addMemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemBtnActionPerformed
         // TODO add your handling code here:
-        new addmember().setVisible(true);
+        new AddMember().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_addMemBtnActionPerformed
 

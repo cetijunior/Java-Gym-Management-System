@@ -12,13 +12,14 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
+
 public class UpdateMemFunc {
      private static int lastid;
      private static String myID;
      
      
-     public UpdateMemFunc(String SearchID){
-         myID = SearchID;
+     public UpdateMemFunc(String MemID){
+         myID = MemID;
      }
     
 Connection conn = new DBConnection().connect();
@@ -52,7 +53,7 @@ Connection conn = new DBConnection().connect();
     void addTOMoreMemDetails(String NIC, String emailAddress, String Gender, Double H, Double W, String Remarks) {
     try {
         PreparedStatement ps;
-        ps = conn.prepareStatement("Update morememberdetails SET nic =?,email =?,gender =?,height =?,weight =?,bmi =?,remarks = ?,lastUpdated = ? where id = ?");
+        ps = conn.prepareStatement("Update morememberdetails SET nic =?, email =?, gender =?, height=?, weight=?, bmi =?, remarks = ?, lastUpdated = ? where id = ?");
         
         ps.setString(1, NIC);
         ps.setString(2, emailAddress);
@@ -61,6 +62,7 @@ Connection conn = new DBConnection().connect();
         ps.setDouble(5, W);
         ps.setInt(6,getBMI(H,W));
         ps.setString(7, Remarks);
+        
         java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
         ps.setTimestamp(8, date);
         ps.setString(9,myID );

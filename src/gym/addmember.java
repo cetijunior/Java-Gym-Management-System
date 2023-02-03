@@ -8,12 +8,10 @@ package gym;
 import javax.swing.JOptionPane;
 
 
-public class addmember extends javax.swing.JFrame{
+public class AddMember extends javax.swing.JFrame{
 
-    /**
-     * Creates new form addmember
-     */
-    public addmember() {
+
+    public AddMember() {
         initComponents();
     }
    
@@ -21,10 +19,11 @@ public class addmember extends javax.swing.JFrame{
 private static String memName, contactNo, memAddress;
 private static String NIC, emailAddress, Gender, Remarks;
 private static Double H, W ;
+private static Boolean dd;
 
     
      public void clearFields(){
-      name.setText("");
+        name.setText("");
         nic.setText("");
         address.setText("");
         contact.setText("");
@@ -35,7 +34,7 @@ private static Double H, W ;
   }
     
 public boolean checkIsEmpty(){
-   String a  = name.getText();
+   String a = name.getText();
    String b = nic.getText();
    String c = address.getText();
    String d = contact.getText();
@@ -44,15 +43,16 @@ public boolean checkIsEmpty(){
    String g = weight.getText();
 
    
-   String [] xxx = {a,b,c,d,e,f,g};
+String [] xxx = {a,b,c,d,e,f,g};
    
-   if (a==("") || b==("") || c==("") || d==("") || e==("") || f==("") || g==("")){
-   JOptionPane.showMessageDialog(null, "Sigurohu qe t'i mbushesh fushat me infon e pershtatshme.");
+   for(int i = 0; i<xxx.length;i++){
+       if (xxx[i]==""){
+           JOptionPane.showMessageDialog(null, "Shkruaj informacion");
+           return true; 
+       }
+        break;
    }
-        return false;
-   
-   
- 
+ return false;   
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -387,14 +387,17 @@ public boolean checkIsEmpty(){
 
     private void closebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closebtnActionPerformed
         // TODO add your handling code here:
-        addmember.this.setVisible(false);
+        AddMember.this.setVisible(false);
         new MainFrame().setVisible(true);
     }//GEN-LAST:event_closebtnActionPerformed
 
     private void addDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDBActionPerformed
         // TODO add your handling code here:
         boolean dd = checkIsEmpty();
+        JOptionPane.showMessageDialog(null, "Shkruaj informacion");
+        
         AddMemberFunc add = new AddMemberFunc();
+        
         memName = name.getText();
         NIC = nic.getText();
         contactNo = contact.getText();
@@ -432,42 +435,34 @@ public boolean checkIsEmpty(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addmember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addmember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addmember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addmember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addmember().setVisible(true);
+                new AddMember().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDB;
-    private javax.swing.JButton addDB1;
-    private javax.swing.JButton addDB2;
-    private javax.swing.JButton addDB3;
     private javax.swing.JTextField address;
     private javax.swing.JButton clearbtn;
-    private javax.swing.JButton clearbtn1;
-    private javax.swing.JButton clearbtn2;
-    private javax.swing.JButton clearbtn3;
     private javax.swing.JButton closebtn;
     private javax.swing.JTextField contact;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox gender;
     private javax.swing.JTextField height;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -481,21 +476,11 @@ public boolean checkIsEmpty(){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name;
     private javax.swing.JTextField nic;

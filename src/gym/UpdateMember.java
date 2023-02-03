@@ -5,35 +5,35 @@
  */
 package gym;
 
-
-
+import static gym.MainFrame.results;
 import javax.swing.JOptionPane;
 
 
 public class UpdateMember extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UpdateMember
-     */
-    
+    static String SearchKey;
+    static boolean yes;
+    static String[] results = new String[12];
     
     private static String Name, id ;
     private static String memName,contactNo,memAddress;
 private static String NIC,emailAddress,Gender,Remarks;
 private static Double H, W ;
+    private String SearchID;
     public UpdateMember() {
         initComponents();
     }
     public UpdateMember( String i){
         initComponents();
-     
-       JOptionPane.showMessageDialog(null,"from constructor id value :"+id );
-        
+        id = i;
+       //JOptionPane.showMessageDialog(null,"id e marre :"+id );
+      
+       
     }
     
     
-   static String [] rr = new GetMemDetails().search(id);
-
+  // static String [] rr = new GetMemDetails().search(id);
+   
    public void clearFields(){
         name.setText("");
         nic.setText("");
@@ -45,9 +45,29 @@ private static Double H, W ;
         remarks.setText("");
   }
    
+   public void placeholderText(String SearchID){
    
-    
-    
+       results = new GetMemDetails().search(SearchID);
+            for(int i= 0;i<12;i++){
+                System.out.println(results[i]);
+                System.out.println();
+            }
+            name.setText(results[0]);
+            nic.setText(results[6]);
+            address.setText(results[3]);
+            contact.setText(results[2]);
+            email.setText(results[7]);
+
+            height.setText(results[9]);
+            weight.setText(results[10]);
+
+            remarks.setText(results[12]);
+
+   
+   }
+   
+   
+            
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +81,7 @@ private static Double H, W ;
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
+        getInfo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         addDB = new javax.swing.JButton();
@@ -109,6 +130,13 @@ private static Double H, W ;
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Perditeso te dhenat: ");
 
+        getInfo.setText("Info get test");
+        getInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -117,7 +145,9 @@ private static Double H, W ;
                 .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(70, 70, 70)
                 .addComponent(jLabel17)
-                .addGap(158, 158, 158))
+                .addGap(77, 77, 77)
+                .addComponent(getInfo)
+                .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +157,9 @@ private static Double H, W ;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(getInfo)
+                    .addComponent(jLabel17))
                 .addContainerGap())
         );
 
@@ -384,8 +416,11 @@ private static Double H, W ;
         W= Double.parseDouble(weight.getText());
 
         add.addToMemberDetails(memName,contactNo,memAddress);
-
         add.addTOMoreMemDetails(NIC,emailAddress,Gender,H,W,Remarks);
+       
+        this.setVisible(false);
+        new MainFrame().setVisible(true);
+        
     }//GEN-LAST:event_addDBActionPerformed
 
     private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearbtnActionPerformed
@@ -406,6 +441,11 @@ private static Double H, W ;
     private void weightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_weightActionPerformed
+
+    private void getInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInfoActionPerformed
+        // TODO add your handling code here:
+        placeholderText(SearchID);
+    }//GEN-LAST:event_getInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,6 +478,7 @@ private static Double H, W ;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UpdateMember().setVisible(true);
+                
             }
         });
     }
@@ -450,6 +491,7 @@ private static Double H, W ;
     private javax.swing.JTextField contact;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox gender;
+    private javax.swing.JButton getInfo;
     private javax.swing.JTextField height;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

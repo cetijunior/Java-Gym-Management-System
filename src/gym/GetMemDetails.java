@@ -20,11 +20,7 @@ String [] results = new String[14];
 private static String name, memId ,contact,address,registeredBy,registeredOn;
 private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , LastUpdated;
 
-    /**
-     *
-     * @param SearchName
-     * @return
-     */
+
     public String[] search(String SearchID) {
         if(SearchID == ""){
             JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari" );
@@ -67,7 +63,7 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
                 
                 ps2 = conn.prepareStatement(sql2);
                 
-                ps2.setString(1, SearchID);
+                ps2.setString(1, memId);
                 ResultSet rs2 = ps2.executeQuery();
             
             
@@ -108,8 +104,11 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
         
 
     void searchByID(String SearchID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
-    
+       public int getBMI(double h, double w){
+        int b = (int) (w/(h*h));
+       return b; 
+    }
 }
