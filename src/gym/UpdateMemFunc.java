@@ -18,8 +18,8 @@ public class UpdateMemFunc {
      private static String myID;
      
      
-     public UpdateMemFunc(String MemID){
-         myID = MemID;
+     public UpdateMemFunc(String SearchID){
+         myID = SearchID;
      }
     
 Connection conn = new DBConnection().connect();
@@ -68,7 +68,7 @@ Connection conn = new DBConnection().connect();
         ps.setString(9,myID );
         
         ps.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Informacioni u perditesua me sukses ne sistem");
+        //JOptionPane.showMessageDialog(null, "Informacioni u perditesua me sukses ne sistem");
         
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null,"Informacioni nuk mund te perditesohej "+ex );

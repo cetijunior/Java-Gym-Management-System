@@ -18,12 +18,14 @@ import javax.swing.JOptionPane;
 public class AddMemberFunc {
     
     
-    private static int lastid;
+    private static int lastid; // id e fundit e shenuar ne databaze
     
-Connection conn = new DBConnection().connect();
+Connection conn = new DBConnection().connect(); // lidhja me databazen
+
+// marrja e pjeses se pare te informacioneve nga databaza
     void addToMemberDetails(String memName,  String contactNo, String memAddress) {
     try {
-        PreparedStatement ps;
+        PreparedStatement ps; // sql statement
         ps = conn.prepareStatement("insert into "
                 + "memberdetails"+"(name,contact_number,address,registered_on,registered_by) "
                 + "values(?,?,?,?,?)");
@@ -38,7 +40,7 @@ Connection conn = new DBConnection().connect();
         
         
         ps.setString(5, new LoginFrameFunc().getLogName());
-        JOptionPane.showMessageDialog(null, "Informacioni i pjesa pareS "+ memName + " u shtua ne sistem me sukses");
+        //JOptionPane.showMessageDialog(null, "Informacioni i pjesa pareS "+ memName + " u shtua ne sistem me sukses");
         ps.executeUpdate();
     
     
@@ -48,14 +50,12 @@ Connection conn = new DBConnection().connect();
         
     }
     
-    
-    
-    
-    
+
     
     
     void addTOMoreMemDetails(String NIC, String emailAddress, String Gender, Double H, Double W, String Remarks) {
     
+        // marrja e pjeses se dyte te informacioneve nga databaza
         try {
         PreparedStatement ps;
         ps = conn.prepareStatement("insert into "
@@ -82,18 +82,12 @@ Connection conn = new DBConnection().connect();
     }
     }
     
-   
     
-    
-    
-    
-    public int getId(){
+    public int getId(){ // kjo ben qe id e anetareve te rinj te inkrementohet me 1, ne baze te id se fundit.
     try{
             
             PreparedStatement st = conn.prepareStatement("select * from  memberdetails where id");
-
             
-
             ResultSet rs = st.executeQuery();
            rs = st.executeQuery("SELECT MAX(id) AS id FROM memberdetails");
            if(rs.next())
@@ -111,12 +105,10 @@ Connection conn = new DBConnection().connect();
     return lastid;
 }
     
-    public int getBMI(double h, double w){
+    // kalkulon BMI e antareve
+    public int getBMI(double w, double h){
         int b = (int) (w/(h*h));
        return b; 
     }
-    
-
-    
     
 }

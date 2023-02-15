@@ -925,6 +925,7 @@ public final class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Zgjidh nje anetar");
         }
         else{
+            String SearchID = idS.getText();
             UpdateMember update = new UpdateMember(idS.getText());
             
             this.setVisible(false);
@@ -951,11 +952,13 @@ public final class MainFrame extends javax.swing.JFrame {
 
                 ps2.setString(1, (idS.getText()));
                 ResultSet rs = ps2.executeQuery();
+                
+                
                 if(rs.next()){
                     new DeleteMember((lname.getText()), (idS.getText())).setVisible(true);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Nuk ka  "+idS.getText()+" ne database, kontrollo ID-ne");
+                    JOptionPane.showMessageDialog(null,"Nuk ka  "+ idS.getText() +" ne database, kontrollo ID-ne");
 
                 }
             } catch (SQLException ex) {

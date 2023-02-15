@@ -17,9 +17,11 @@ public class GetMemDetails   {
 Connection conn = new DBConnection().connect();
 String [] results = new String[14];
     
-private static String name, memId ,contact,address,registeredBy,registeredOn;
-private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , LastUpdated;
+private static String name, memId ,contact, address, registeredBy, registeredOn;
+private static String NIC, Email, Gender, Height, Weight, BMI, Remarks, LastUpdated;
 
+
+//FIX Search ID problem edhe update member nuk i bo reload kur submit field eshte bosh.
 
     public String[] search(String SearchID) {
         if(SearchID == ""){
@@ -43,17 +45,15 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
                     contact = rs.getString("contact_number");
                     address = rs.getString("address");
                     registeredOn = rs.getString("registered_on");
-                    registeredBy = rs.getString("registered_by");
+                    registeredBy = rs.getString("registered_by");                  
                 }
                 
                 else{
-                 JOptionPane.showMessageDialog(null,"Nuk ka anetar me id: " + SearchID + " ne database" );
+                 JOptionPane.showMessageDialog(null,"Nuk ka anetar me Id: " + memId + " ne database" );
                  
-             }
-                
                 
              System.out.println("Nuk ka anetar me kete ID :(   "+memId);   
-            
+                }
             
             String sql2 = "Select * from morememberdetails Where id = ?";
             
@@ -65,11 +65,8 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
                 
                 ps2.setString(1, memId);
                 ResultSet rs2 = ps2.executeQuery();
-            
-            
-            
-            
-            
+
+                
              if(rs2.next()){
                  NIC = rs2.getString("nic");
                  Email = rs2.getString("email");
@@ -81,11 +78,7 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
                  LastUpdated = rs2.getString("lastUpdated");
              
              }
-             
-            
-            
-            
-        
+
          String [] r  = {name, memId, contact, address, registeredBy, registeredOn, NIC, Email, Gender, Height, Weight, BMI, Remarks, LastUpdated};
             System.arraycopy(r, 0, results, 0, 14);
          
@@ -94,18 +87,21 @@ private static String NIC, Email, Gender , Height , Weight , BMI , Remarks , Las
         
     
     return results;
-    }catch(SQLException | HeadlessException c ){
-             JOptionPane.showMessageDialog(null,"error search "+c );
+    }
+            
+     
+            catch(SQLException | HeadlessException c ){
+          
+                JOptionPane.showMessageDialog(null,"error search "+c );
         }
+            
     return results;
     }
         return results;
         }
         
 
-    void searchByID(String SearchID) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
+
     
        public int getBMI(double h, double w){
         int b = (int) (w/(h*h));

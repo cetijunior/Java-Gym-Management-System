@@ -45,7 +45,7 @@ public boolean checkIsEmpty(){
    
 String [] xxx = {a,b,c,d,e,f,g};
    
-   for(int i = 0; i<xxx.length;i++){
+   for(int i = 7; i<xxx.length;i++){
        if (xxx[i]==""){
            JOptionPane.showMessageDialog(null, "Shkruaj informacion");
            return true; 

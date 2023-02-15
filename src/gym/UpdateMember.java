@@ -19,7 +19,7 @@ public class UpdateMember extends javax.swing.JFrame {
     private static String memName,contactNo,memAddress;
 private static String NIC,emailAddress,Gender,Remarks;
 private static Double H, W ;
-    private String SearchID;
+  static String [] rr = new GetMemDetails().search(id);
     public UpdateMember() {
         initComponents();
     }
@@ -27,7 +27,7 @@ private static Double H, W ;
         initComponents();
         id = ii;
         
-        results = new GetMemDetails().search(SearchID);
+        results = new GetMemDetails().search(id);
             for(int i= 0;i<12;i++){
                 System.out.println(results[i]);
                 System.out.println();
@@ -47,8 +47,6 @@ private static Double H, W ;
        
     }
     
-    
-  // static String [] rr = new GetMemDetails().search(id);
    
    public void clearFields(){
         name.setText("");
