@@ -168,15 +168,16 @@ public class LoginFrame extends javax.swing.JFrame {
         password = pword.getText();
         boolean b =new LoginFrameFunc().checkLogin(uName,password);
         if(b== true){
+            String name = uName;
             LoginFrame.this.hide();
         }
-        //System.out.println("from login  "+uName+"   "+pword);
+        System.out.println("from login  "+uName+"   "+pword);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AddMember signup= new AddMember();
+        /*AddMember signup= new AddMember();
         signup.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false);*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

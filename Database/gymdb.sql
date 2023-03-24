@@ -23,7 +23,8 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`name`, `pword`) VALUES
 ('aaa', 'aaa'),
-('admin', '1234');
+('admin', '1234'),
+('cj', 'cj');
 
 -- --------------------------------------------------------
 
@@ -44,13 +45,7 @@ CREATE TABLE `memberdetails` (
 INSERT INTO `memberdetails` (`id`, `name`, `contact_number`, `address`, `registered_on`, `registered_by`) VALUES
 (1, 'asff', 'dssdsd', 'dsdsds', '2016-02-22', 'aaa'),
 (2, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa'),
-(3, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa'),
-(4, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa'),
-(6, 'aaa', 'aaa', 'aaa', '2016-02-23', 'aaa'),
-(7, 'qqq', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa'),
-(8, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', NULL),
-(9, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa'),
-(12, 'Dilan Nilaksha', '23525252', 'asasdd af fasfadfaf', '2016-02-24', 'admin');
+(3, 'jTextField1', 'jTextField3', 'jTextField4', '2016-02-23', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -72,21 +67,12 @@ CREATE TABLE `morememberdetails` (
 -- te dhena shembull
 --
 
-INSERT INTO `morememberdetails` (`id`, `nic`, `email`, `emcontact`, `gender`, `height`, `weight`, `bmi`, `remarks`, `lastUpdated`, `membership_cat`, `recipt_no`, `payment_plan`) VALUES
-(3, 'jTextField2', 'dsdsdd', 'jTextField1', 'Male', 1.8, 90, 27, 'vdvvsvvdvsdvfvdvfdvfvfvfdvdvdvdvdvdvdvdfvvd', '2016-02-23', NULL, NULL, NULL),
-(4, 'jTextField2', 'adadasd', 'jTextField1', 'Male', 2, 222, 55, '', '2016-02-23', NULL, NULL, NULL),
-(5, 'jTextField2', 'sdd', 'jTextField1', 'Male', 2, 42, 10, '', '2016-02-23', NULL, NULL, NULL),
-(6, 'aaa', 'aaa', 'aaa', 'Male', 22, 22, 0, 'sadsaddddsfdfffff', '2016-02-23', 'Main workout area', 'dfsfdfsdfsdf', '6 months'),
-(7, 'jTextField2', '6ytttytyy', 'jTextField1', 'Male', 45, 55, 0, 'yyyyyytytyy', '2016-02-23', 'Main workout area', 'ddddd', '6 months'),
-(8, 'jTextField2', 'frfrf', 'jTextField1', 'Male', 22, 22, 0, '', '2016-02-23', 'Main workout area', 'gbg', '6 months'),
-(9, 'jTextField2', 'dfdddf', 'jTextField1', 'Male', 22, 27, 0, '', '2016-02-23', 'Main workout area', '222', '6 months'),
-(10, '141444344v', '43432424', '343242424', 'Male', 43, 343, 0, 'aaaaaaaaaaaaaaaaaaaaaaa', '2016-02-24', 'Main workout area', '227227', '6 months'),
-(11, '235235223v', 'sdfsddf@gdg', '455646546', 'Male', 1.75, 70, 22, 'wdff fe aafa fe ff  eeq eew adfedfweef wewewewe', '2016-02-24', 'Main workout area', '25254225', '6 months'),
-(12, '3442343v', 'sdfsf@com', '01112324244', 'Male', 1.79, 55, 17, 'genius', '2016-02-24', 'Main workout area', 'adfasfaf', '6 months');
+INSERT INTO `morememberdetails` (`id`, `nic`, `email`, `gender`, `height`, `weight`, `bmi`, `remarks`, `lastUpdated`) VALUES
+(1, 'jTextField2', 'dsdsdd','Male', 1.8, 90, 27, 'vdvvsvvdvsdvfvdvfdvfvfvfdvdvdvdvdvdvdvdfvvd', '2016-02-23'),
+(2, 'aaa', 'aaa', 'Male', 22, 22, 0, 'sadsaddddsfdfffff', '2016-02-23'),
+(3, 'jTextField2', '6ytttytyy', 'Male', 45, 55, 0, 'yyyyyytytyy', '2016-02-23');
 
--- --------------------------------------------------------
-
---
+-- ----------------------------------------------------------
 -- Indexes for dumped tables
 --
 

@@ -37,7 +37,7 @@ public class LoginFrameFunc {
                     //JOptionPane.showMessageDialog(null, "welcome");
                     System.out.println("correct uname pword");
                     
-                    new MainFrame().setVisible(true);
+                    new WelcomeFrame().setVisible(true);
                    
                      
                     setLogName(name);
@@ -67,5 +67,5 @@ public class LoginFrameFunc {
         
         
     return false;
-    }
+        }
     }

@@ -27,7 +27,7 @@ public class DBConnection {
         String password = "";
         
         try{
-            DBConnection = (Connection) DriverManager.getConnection(url, name, password);
+            DBConnection = DriverManager.getConnection(url, name, password);
             System.out.println("Database Connected(2)");
             
         }

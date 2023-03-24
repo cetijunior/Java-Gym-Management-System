@@ -14,6 +14,9 @@ import javax.swing.JOptionPane;
 
 
 public class GetMemDetails   {
+
+    public GetMemDetails() {
+    }
 Connection conn = new DBConnection().connect();
 String [] results = new String[14];
     
@@ -49,10 +52,10 @@ private static String NIC, Email, Gender, Height, Weight, BMI, Remarks, LastUpda
                 }
                 
                 else{
-                 JOptionPane.showMessageDialog(null,"Nuk ka anetar me Id: " + memId + " ne database" );
+                 JOptionPane.showMessageDialog(null,"Nuk ka anetar me Id: " + SearchID + " ne database" );
                  
                 
-             System.out.println("Nuk ka anetar me kete ID :(   "+memId);   
+             System.out.println("Nuk ka anetar me kete ID :(   "+SearchID);   
                 }
             
             String sql2 = "Select * from morememberdetails Where id = ?";

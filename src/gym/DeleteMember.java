@@ -5,8 +5,10 @@
  */
 package gym;
 
+import static gym.SearchFrame.results;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -16,19 +18,13 @@ import javax.swing.JOptionPane;
 
 public class DeleteMember extends javax.swing.JFrame {
 
+    private boolean yes;
+
     /**
      * Creates new form DeleteMember
      */
-    public DeleteMember() {
+    public DeleteMember(){
         initComponents();
-        
-    }
-    private static String id;
-    public DeleteMember(String name,String ID){
-        initComponents();
-        //labelDelete.setText("Deshioroni te fshini anetarin: "+ name +" nga sistemi?");
-        id = ID;
-        delMemID.setText("ID e anetarit eshte:  "+id);
     }
 
     /**
@@ -45,11 +41,16 @@ public class DeleteMember extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         delMemID = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        idS = new javax.swing.JTextField();
+        submit = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        labelDelete.setForeground(new java.awt.Color(0, 0, 0));
 
         jButton1.setText("Yes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,32 +66,63 @@ public class DeleteMember extends javax.swing.JFrame {
             }
         });
 
+        delMemID.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel40.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel40.setText("Shkruaj ID e anetarit");
+
+        idS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idSActionPerformed(evt);
+            }
+        });
+
+        submit.setText("Submit");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(delMemID, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
-            .addComponent(labelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                    .addComponent(delMemID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(idS, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submit))
+                    .addComponent(jLabel40))
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(idS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submit))
+                .addGap(41, 41, 41)
                 .addComponent(labelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(delMemID, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jPanel16.setBackground(new java.awt.Color(0, 0, 102));
@@ -136,15 +168,14 @@ public class DeleteMember extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 395, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -153,10 +184,13 @@ public class DeleteMember extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DeleteMember.this.setVisible(false);
+        this.setVisible(false);
+        new WelcomeFrame().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String id = idS.getText();
         try {
             // TODO add your handling code here:
             Connection conn = new DBConnection().connect();
@@ -166,20 +200,43 @@ public class DeleteMember extends javax.swing.JFrame {
             pst.setString(1,id);
             pst.executeUpdate();
 
-            conn.prepareStatement("delete from morememberdetails where id = ?");
+            pst = conn.prepareStatement("delete from morememberdetails where id = ?");
             pst.setString(1,id);
             pst.executeUpdate();
 
 
-            JOptionPane.showMessageDialog(null, "Anetari me id: "+id+" u fshi me sukses nga sistemi");
+            JOptionPane.showMessageDialog(null, "Anetari me id: "+ id +" u fshi me sukses nga sistemi");
             
-            DeleteMember.this.setVisible(false);
+            this.setVisible(false);
             
         } catch (SQLException ex) {
             Logger.getLogger(DeleteMember.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void idSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idSActionPerformed
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        // TODO add your handling code here:
+        String SearchID = idS.getText();
+         if("".equals(idS.getText())){
+            JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari");
+         }
+         else {
+             results = new GetMemDetails().search(SearchID);
+            for(int i= 0;i<14;i++){
+                System.out.println(results[i]);
+                System.out.println();
+            }
+            
+             String name = (results[0]);
+             delMemID.setText("ID e anetarit eshte:  "+ SearchID);
+             labelDelete.setText("Deshioroni te fshini anetarin: "+ name +" nga sistemi?");
+         }
+    }//GEN-LAST:event_submitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,12 +275,15 @@ public class DeleteMember extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel delMemID;
+    private javax.swing.JTextField idS;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JLabel labelDelete;
+    private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }
