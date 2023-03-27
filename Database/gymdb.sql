@@ -107,3 +107,19 @@ ALTER TABLE `morememberdetails`
 --
 ALTER TABLE `memberdetails`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  
+  -- BMI Calculator (M and KG) 
+  
+  
+  -- Add a new column to store the BMI value
+ALTER TABLE morememberdetails ADD COLUMN bmi FLOAT;
+
+-- Create a trigger to update the BMI value
+DELIMITER $$
+CREATE TRIGGER calculate_bmi
+BEFORE INSERT ON morememberdetails
+FOR EACH ROW
+BEGIN
+  SET NEW.bmi = NEW.weight / (NEW.height * NEW.height);
+END$$
+DELIMITER ;

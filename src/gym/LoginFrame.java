@@ -4,6 +4,9 @@
  */
 package gym;
 
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+
 public class LoginFrame extends javax.swing.JFrame {
 
     /**
@@ -11,6 +14,10 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        
+        this.setTitle("Login");
+        
+        setIconImage();
     }
     private static String uName, password;
 
@@ -178,6 +185,9 @@ public class LoginFrame extends javax.swing.JFrame {
         /*AddMember signup= new AddMember();
         signup.setVisible(true);
         this.setVisible(false);*/
+        
+        JOptionPane.showMessageDialog(rootPane, "Per momentin programi nuk e suporton regjistrimin direkt nga perdoruesit\nCdo abonent duhet te regjistrohet nga nje admin :)");
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -232,4 +242,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField pword;
     // End of variables declaration//GEN-END:variables
+
+
+   private void setIconImage() {
+    setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/gym/ICONS/icon.png")));
+    }
+
 }

@@ -5,10 +5,12 @@
  */
 package gym;
 
+// Fix Yes/No buttons to show up after ID submit !
+
 import static gym.SearchFrame.results;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -25,6 +27,12 @@ public class DeleteMember extends javax.swing.JFrame {
      */
     public DeleteMember(){
         initComponents();
+        
+        this.setTitle("Delete");
+        
+        setIconImage();
+        
+        //delete.setVisible(false);
     }
 
     /**
@@ -38,12 +46,12 @@ public class DeleteMember extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         labelDelete = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         delMemID = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         idS = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -52,17 +60,11 @@ public class DeleteMember extends javax.swing.JFrame {
 
         labelDelete.setForeground(new java.awt.Color(0, 0, 0));
 
-        jButton1.setText("Yes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        delete.setBackground(new java.awt.Color(102, 0, 0));
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("No");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
 
@@ -78,10 +80,22 @@ public class DeleteMember extends javax.swing.JFrame {
             }
         });
 
+        submit.setBackground(new java.awt.Color(0, 0, 102));
+        submit.setForeground(new java.awt.Color(255, 255, 255));
         submit.setText("Submit");
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
+            }
+        });
+
+        back.setBackground(new java.awt.Color(0, 102, 102));
+        back.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        back.setForeground(new java.awt.Color(255, 255, 255));
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
             }
         });
 
@@ -92,18 +106,18 @@ public class DeleteMember extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                     .addComponent(delMemID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(idS, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(submit))
-                    .addComponent(jLabel40))
+                    .addComponent(jLabel40)
+                    .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(back)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,15 +128,14 @@ public class DeleteMember extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(idS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submit))
-                .addGap(41, 41, 41)
-                .addComponent(labelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(39, 39, 39)
                 .addComponent(delMemID, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(delete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(back))
         );
 
         jPanel16.setBackground(new java.awt.Color(0, 0, 102));
@@ -175,22 +188,21 @@ public class DeleteMember extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new WelcomeFrame().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
 
         String id = idS.getText();
+        if("".equals(idS.getText())){
+            JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari");}
+            
+            else{
         try {
             // TODO add your handling code here:
             Connection conn = new DBConnection().connect();
@@ -208,12 +220,13 @@ public class DeleteMember extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Anetari me id: "+ id +" u fshi me sukses nga sistemi");
             
             this.setVisible(false);
+            new DeleteMember().setVisible(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(DeleteMember.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+      }
+    }//GEN-LAST:event_deleteActionPerformed
 
     private void idSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idSActionPerformed
         // TODO add your handling code here:
@@ -230,13 +243,23 @@ public class DeleteMember extends javax.swing.JFrame {
             for(int i= 0;i<14;i++){
                 System.out.println(results[i]);
                 System.out.println();
+                
+                String name = (results[0]);
+                delMemID.setText("Anetari me ID: " + SearchID + " eshte:  " + name);
+                labelDelete.setText("Deshioroni te fshini anetarin: "+ name +", nga sistemi?");
+
+               delete.setVisible(true);
+               //back.setVisible(true);
+                
             }
-            
-             String name = (results[0]);
-             delMemID.setText("ID e anetarit eshte:  "+ SearchID);
-             labelDelete.setText("Deshioroni te fshini anetarin: "+ name +" nga sistemi?");
          }
     }//GEN-LAST:event_submitActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new WelcomeFrame().setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,10 +297,10 @@ public class DeleteMember extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JLabel delMemID;
+    private javax.swing.JButton delete;
     private javax.swing.JTextField idS;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
@@ -286,4 +309,8 @@ public class DeleteMember extends javax.swing.JFrame {
     private javax.swing.JLabel labelDelete;
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/gym/ICONS/icon.png")));
+    }
 }
