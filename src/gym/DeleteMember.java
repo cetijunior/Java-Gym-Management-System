@@ -61,6 +61,7 @@ public class DeleteMember extends javax.swing.JFrame {
         labelDelete.setForeground(new java.awt.Color(0, 0, 0));
 
         delete.setBackground(new java.awt.Color(102, 0, 0));
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("Delete");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

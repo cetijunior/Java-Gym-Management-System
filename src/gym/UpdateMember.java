@@ -5,11 +5,10 @@
  */
 package gym;
 
-import static gym.SearchFrame.results;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
-
+// when the values show up for the update, the icon and title dissapear, Fix it !!
 public class UpdateMember extends javax.swing.JFrame {
 
     static String SearchKey;
@@ -64,29 +63,22 @@ private static Double H, W ;
         remarks.setText("");
   }
    
-   /*public void placeholderText(String SearchID){
-   
-       results = new GetMemDetails().search(SearchID);
-            for(int i= 0;i<12;i++){
-                System.out.println(results[i]);
-                System.out.println();
-            }
-            name.setText(results[0]);
-            nic.setText(results[6]);
-            address.setText(results[3]);
-            contact.setText(results[2]);
-            email.setText(results[7]);
-
-            height.setText(results[9]);
-            weight.setText(results[10]);
-
-            remarks.setText(results[12]);
-
-   
+   public boolean checkIsEmpty() {
+    String a = name.getText();
+    String b = nic.getText();
+    String c = address.getText();
+    String d = contact.getText();
+    String e = email.getText();
+    String f = height.getText();
+    String g = weight.getText();
+    
+    if (a.isEmpty() || b.isEmpty() || c.isEmpty() || d.isEmpty() || e.isEmpty() || f.isEmpty() || g.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ploteso te gjitha fushat!");
+        return true;
+    } else {
+        return false;
+    }
    }
-   
-   */
-            
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -452,9 +444,9 @@ private static Double H, W ;
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -496,6 +488,8 @@ private static Double H, W ;
 
     private void addDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDBActionPerformed
         // TODO add your handling code here:
+        boolean dd = checkIsEmpty();
+        
         UpdateMemFunc  add = new UpdateMemFunc (id);
         memName = name.getText();
         NIC = nic.getText();
@@ -512,7 +506,7 @@ private static Double H, W ;
         add.addTOMoreMemDetails(NIC,emailAddress,Gender,H,W,Remarks);
        
         this.setVisible(false);
-        new WelcomeFrame().setVisible(true);
+        new WelcomeFrame().setVisible(true);   
         
     }//GEN-LAST:event_addDBActionPerformed
 
@@ -541,6 +535,7 @@ private static Double H, W ;
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
+        
         GetMemDetails rr = new GetMemDetails();
           if("".equals(idS.getText())){
             JOptionPane.showMessageDialog(null,"Shkruaj ID-ne e nje anetari");
@@ -549,8 +544,13 @@ private static Double H, W ;
             String SearchID = idS.getText();
             UpdateMember update = new UpdateMember(idS.getText());
             
+            update.setTitle("Update");
+            update.setIconImage();
+
+            
             this.setVisible(false);
             update.setVisible(true);
+
          
         System.out.println("id e marre"+ idS.getText()); 
         }
