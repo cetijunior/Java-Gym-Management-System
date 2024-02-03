@@ -1,5 +1,6 @@
-# Sistem-Menaxhim-Palestre
+# Sistem-Menaxhim-Palestre || Gym Management System 
  School project for managing our local GYM (at least an attempt at making one)
+ 
  Projekti eshte ne gjuhen Java dhe eshte krijuar me IDE NetBeans edhe me Xampp per databasen.
  
  Sigurohuni qe te krijoni databasen lokale para se te inicializoni projektin edhe shtoni mysql connector tek librarite e projektit
@@ -17,3 +18,6 @@
 ![WhatsApp Image 2023-03-27 at 20 39 40](https://user-images.githubusercontent.com/78642663/228966671-729c94b5-b915-43e4-b1cb-d7cc5a34bcd6.jpg)
 ![WhatsApp Image 2023-03-27 at 20 39 40](https://user-images.githubusercontent.com/78642663/228966919-fdc58696-3a07-48c9-b3b5-efad29311c23.jpg)
 ![WhatsApp Image 2023-03-27 at 20 39 41](https://user-images.githubusercontent.com/78642663/228966965-1ed27766-5859-45f9-ac67-418f9f871613.jpg)
+
+
+(The Project is in Albanian as it was initially a project for school) 
